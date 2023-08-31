@@ -251,6 +251,47 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
                 end)
             end
     end)
+
+	local anticccon
+    local antiCC = Perks1:CreateToggle("Anti ColorCorrection", function(bool)
+        antiCC = bool
+            if bool == true then
+                anticccon = game.Lighting.ChildAdded:Connect(function(v)
+			if v:IsA("ColorCorrectionEffect") then
+				v.Enabled = false
+				v:Destroy()
+			end
+                end)
+	elseif bool == false then
+			anticccon:Disconnect()
+            end
+    end)
+	
+	local antigecon1
+	local antigecon2
+    local antige = Perks1:CreateToggle("Anti Ghost Effect", function(bool)
+        antige = bool
+            if bool == true then
+                antigecon1 = game.Lighting.ChildAdded:Connect(function(v)
+			if v:IsA("Sky") and v.Name == "Creepysky" then
+				game.ReplicatedStorage.Sky:Clone().Parent = game.Lighting
+				v:Destroy()
+			end
+			if v:IsA("ColorCorrectionEffect") and v.Name == "dimensioncolor" then
+				v.Enabled = false
+				v:Destroy()
+			end
+                end)
+		antigecon2 = game.Lighting:GetPropertyChangedSignal("ExposureCompensation"):Connect(funciton()
+			if game.Lighting.ExposureCompensation ~= 0 then
+				game.Lighting.ExposureCompensation = 0
+			end
+		end)
+	elseif bool == false then
+			antigecon1:Disconnect()
+			antigecon2:Disconnect()
+            end
+    end)
     
     local antiHJack = Perks1:CreateToggle("Anti Hallow-Jack", function(bool)
         antiHallow = bool
