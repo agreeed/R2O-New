@@ -282,7 +282,7 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
 				v:Destroy()
 			end
                 end)
-		antigecon2 = game.Lighting:GetPropertyChangedSignal("ExposureCompensation"):Connect(funciton()
+		antigecon2 = game.Lighting:GetPropertyChangedSignal("ExposureCompensation"):Connect(function()
 			if game.Lighting.ExposureCompensation ~= 0 then
 				game.Lighting.ExposureCompensation = 0
 			end
@@ -290,6 +290,20 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
 	elseif bool == false then
 			antigecon1:Disconnect()
 			antigecon2:Disconnect()
+            end
+    end)
+	
+	local antincon
+    local antin = Perks1:CreateToggle("Anti Nightmare", function(bool)
+        antin = bool
+            if bool == true then
+                antincon = game.Players.LocalPlayer:GetPropertyChangedSignal("CameraMode"):Connect(function()
+			if game.Players.LocalPlayer.CameraMode ~= Enum.CameraMode.Classic then
+				game.Players.LocalPlayer.CameraMode = "Classic"
+			end
+                end)
+	elseif bool == false then
+			antincon:Disconnect()
             end
     end)
     
@@ -454,7 +468,7 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
                     if getGlove() == "ZZZZZZZ" and workspace:WaitForChild(game.Players.LocalPlayer.Name):FindFirstChild("entered") then
                         if workspace:WaitForChild(game.Players.LocalPlayer.Name):FindFirstChild("Ragdolled").Value then
                             task.wait(1)
-                            Time += 1
+                            Time = Time + 1
                             print("You Have Been Asleep For: " .. Time .. " Seconds. You Have: " .. (3600 - Time) .. " Seconds Left")
                         else
                             Time = 0
