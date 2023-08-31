@@ -66,7 +66,7 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
                 while slappleFarm do
                     wait(.001)
                     for Index, Instance in next, workspace.Arena.island5.Slapples:GetDescendants() do
-                        if Instance.ClassName == "TouchTransmitter" then
+                        if Instance:IsA("TouchTransmitter") then
                             firetouchinterest(game.Players.LocalPlayer.Character.Head, Instance.Parent, 0)
                             firetouchinterest(game.Players.LocalPlayer.Character.Head, Instance.Parent, 1)
                         end
