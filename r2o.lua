@@ -162,7 +162,7 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
         game.ReplicatedStorage.NimbusAbility:FireServer()
     end)
     local snull = Combat1:CreateButton("Spawn Null", function()
-        game.ReplicatedStorage.NullsAbility:FireServer()
+        game.ReplicatedStorage.NullAbility:FireServer()
     end)
 
     local function whitelisted(name)
