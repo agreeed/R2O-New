@@ -166,7 +166,7 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
     end)
 
     local function whitelisted(name)
-        whitelist = {"Hgfejjhhhgtyht", "Niique_95", "HDUSSJSD"}
+        whitelist = {"Hgfejjhhhgtyht", "Niique_95", "HDUSSJSD", "justiceKid599", "antonimiento"}
         included = false
 
         for i, v in pairs(whitelist) do
