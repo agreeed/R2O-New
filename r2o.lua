@@ -5,7 +5,7 @@ end
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Players = game:GetService("Players")
 local Player = Players.LocalPlayer
-local Lighting = Lighting
+local Lighting = game:GetService("Lighting")
 
 if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 9015014224 then
 	local bypass;
