@@ -189,14 +189,13 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
 		if bool == true then
 			while slapAura do
 				task.wait(.005)  
-				local s,e = pcall(function()    
-					for Index, Player_ in next, game.Players:GetPlayers() do
-						if Player_ ~= Player and Player_.Character and Player.Character:FindFirstChild("entered") and whitelisted(Player_.Name) then
-							if Player_.Character:FindFirstChild("Head") then
-								if Player_.Character.Head:FindFirstChild("UnoReverseCard") == nil and Player_.Character:FindFirstChild("rock") == nil then
-									if Player_.Character:FindFirstChild("HumanoidRootPart") then
-										local Magnitude = (Player.Character.HumanoidRootPart.Position - Player_.Character.HumanoidRootPart.Position).Magnitude
-										
+				pcall(function()    
+					for Index, Player in next, game.Players:GetPlayers() do
+						if Player ~= game.Players.LocalPlayer and Player.Character and Player.Character:FindFirstChild("entered") and whitelisted(Player.Name) then
+							if Player.Character:FindFirstChild("Head") then
+								if Player.Character.Head:FindFirstChild("UnoReverseCard") == nil and Player.Character:FindFirstChild("rock") == nil then
+									if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+										local Magnitude = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Player.Character.HumanoidRootPart.Position).Magnitude
 										task.wait()
 										if 25 >= Magnitude then
 											shared.gloveHits[getGlove()]:FireServer(Player_.Character:WaitForChild("Head"))
@@ -207,10 +206,6 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
 						end
 					end
 				end)
-
-				if not s then
-					warn(e)
-				end
 			end 
 		end
 	end)
