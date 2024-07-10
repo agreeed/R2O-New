@@ -192,7 +192,7 @@ if game.PlaceId == 6403373529 or game.PlaceId == 11520107397 or game.PlaceId == 
 				pcall(function()    
 					for Index, Player_ in next, game.Players:GetPlayers() do
 						if Player_ ~= game.Players.LocalPlayer and Player_.Character and Player_.Character:FindFirstChild("entered") and whitelisted(Player_.Name) then
-							if Player_.Character:FindFirstChild("Head") then
+							if Player_.Character:FindFirstChild("Head") and Player_.Character.Ragdolled.Value == false then
 								if Player_.Character.Head:FindFirstChild("UnoReverseCard") == nil and Player_.Character:FindFirstChild("rock") == nil then
 									if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
 										local Magnitude = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Player_.Character.HumanoidRootPart.Position).Magnitude
